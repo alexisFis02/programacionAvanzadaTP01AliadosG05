@@ -1,8 +1,0 @@
-package Clases;
-import java.util.*;
-
-public class Relaciones {
-	private Map<Integer,Vecino> vecinos;
-	
-	public Relaciones
-}
