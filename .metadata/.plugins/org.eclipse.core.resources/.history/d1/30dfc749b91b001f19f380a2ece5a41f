@@ -1,0 +1,18 @@
+package Clases;
+import java.util.*;
+
+public class RelacionesPueblo {
+	private Map<Integer,Vecino> vecinos; // Uso un mapa para almacenar a todos los vecinos
+	
+	public Relaciones()
+	{
+		this.vecinos = new HashMap<>();
+	}
+	
+	public void agregarVecino(int id)
+	{
+		this.vecinos.put(id, new Vecino(id)); //Aca se crea a los nuevos vecinos
+	}
+	
+	
+}

@@ -1,0 +1,83 @@
+package gestorAliados;
+import Clases.*;
+import java.io.*;
+import java.util.*;
+
+public class GestorAliados {
+	private PuebloRelaciones puebloRelaciones;
+	private int liderX;
+	private int liderY;
+	
+	public GestorAliados(String inputFile) throws IOException
+	{
+		this.readData(inputFile);
+	}
+	
+	private void readData(String inputFile) throws IOException
+	{
+		Scanner scanner = new Scanner (new File(inputFile));
+		
+		// Leo los datos de entrada
+		int n = scanner.nextInt(); // n = cantidad de vecinos
+		int m = scanner.nextInt(); // m = cantidad de relaciones
+		this.liderX = scanner.nextInt(); // Oponente 1
+		this.liderY = scanner.nextInt(); // Oponente 2
+		
+		this.puebloRelaciones = new PuebloRelaciones();
+		
+		// Leo el archivo y voy cargando los vecinos y sus relaciones
+		for(int i = 0; i <= m; i++)
+		{
+			int k = scanner.nextInt(); // Vecino 1
+			int r = scanner.nextInt(); // Vecino 2
+			int L = scanner.nextInt(); // Fuerza Relacion entre los 2 vecinos
+			
+			if(!puebloRelaciones.getVecino(k)) //Reviso que el vecino no haya sido cargado anteriormente
+				puebloRelaciones.agregarVecino(k);
+			if(!puebloRelaciones.getVecino(r))
+				puebloRelaciones.agregarVecino(r);
+			
+			puebloRelaciones.agregarRelacion(k, r, L); // Cargo la relacion entre los vecinos
+		}
+		scanner.close();
+	}
+	
+	public void getAliados(String outputFile) throws FileNotFoundException
+	{
+		Vecino leaderX = puebloRelaciones.getVecino(liderX);
+		Vecino leaderY = puebloRelaciones.getVecino(liderX);
+		
+		int aliadosX = countAliados(leaderX,leaderY);
+		int aliadosY = countAliados(leaderY,leaderX);
+		
+		PrintWriter writer = new PrintWriter(new File(outputFile));
+		writer.print(aliadosX + " " + aliadosY);
+		writer.close();
+	}
+	
+	private int countAliados(Vecino lider1, Vecino lider2)
+	{
+		int aliados = 0;
+		Queue<Vecino> vecinos = new LinkedList<>(); // Cola de Vecinos
+		Set<Vecino> visitados = new HashSet<>(); // Set de Vecinos visitados
+		
+		while(!vecinos.isEmpty())
+		{
+			Vecino actual = vecinos.poll(); //obtengo el vecino actual de la cola
+			Map<Vecino,Integer> relaciones = actual.getRelaciones(); // Del vecino obtengo sus relaciones
+			
+			for(Map.Entry<Vecino,Integer> relacion : relaciones.entrySet())
+			{
+				Vecino vecino = relacion.getKey();
+				if(vecino != lider1 && vecino != lider2) // Reviso que el vecino actual no sea ninguno de los lideres
+				{
+					
+				}
+			}
+		}
+		return aliados;
+	}
+		
+		
+	
+}

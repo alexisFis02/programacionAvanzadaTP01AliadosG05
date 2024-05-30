@@ -1,0 +1,29 @@
+package gestorAliados;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+import Clases.Vecino;
+
+public class gestorAliados {
+	
+	public void readAndChargeVecino(String file) throws IOException
+	{
+		BufferedReader read = new BufferedReader(new FileReader(file));
+		
+		StringTokenizer st = new StringTokenizer(read.readLine());
+		int n = Integer.parseInt(st.nextToken());
+		int m = Integer.parseInt(st.nextToken());
+		int x = Integer.parseInt(st.nextToken());
+		int y = Integer.parseInt(st.nextToken());
+		
+		Vecino[] vecinos = new Vecino[n+1];
+		for(int i = 1; i <= n; i++)
+		{
+			vecinos[i] = new Vecino(i);
+		}
+		
+		
+	}
+}
