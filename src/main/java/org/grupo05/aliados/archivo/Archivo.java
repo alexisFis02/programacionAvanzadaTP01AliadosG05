@@ -8,19 +8,20 @@ import org.grupo05.aliados.data.Datos;
 public class Archivo {
 
 	public static Datos abrirArchivo(String inputfilename) {
+		Datos data = null;
 		File f = new File(inputfilename);
 		try {
-			Archivo.procesarArchivo(f);
+			data = Archivo.procesarArchivo(f);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.err.println("LOG: error en abrir archivo, " + e.getMessage());
 		}
 		
-		return new Datos();
+		return data;
 	}
 	
-	private static void procesarArchivo(File file) throws Exception{
+	private static Datos procesarArchivo(File file) throws Exception{
 		Scanner scan = new Scanner(file);
 		
 		int cant_vecinos = scan.nextInt(); // cantidad de vecinos
@@ -28,6 +29,7 @@ public class Archivo {
         int x = scan.nextInt(); // primer oponente
         int y = scan.nextInt(); // segundo oponente
 		
-        
+        scan.close();
+        return new Datos(cant_vecinos, cant_lazos, x, y);
 	}
 }

@@ -1,10 +1,13 @@
 package org.grupo05.aliados.data;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Datos {
 	int cant_vecinos;
 	int cant_lazos;
 	int x,y;
-	
+	Map<Integer, Map<Integer, Integer>> amistades = new HashMap<>();
 	
 	public Datos() {
 		super();
