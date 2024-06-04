@@ -74,7 +74,7 @@ public class Datos {
 	}
 	
 	public void decidirLazos() {
-		aliadosX = amistades.get(y).size();
+		aliadosX = amistades.get(x).size();
         aliadosY = amistades.get(y).size();
 	}
 }

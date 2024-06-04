@@ -40,7 +40,7 @@ public class Archivo {
             int r = scan.nextInt();
             int l = scan.nextInt();
             
-            System.out.println(k + " "+ r + " " + l);
+            
 
             if( k == x){
                 defineAmistad(x, y, data.getAmistades(), r, l);
