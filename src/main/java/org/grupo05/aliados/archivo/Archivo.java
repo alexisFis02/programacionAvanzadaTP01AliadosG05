@@ -23,7 +23,11 @@ public class Archivo {
 	private static void procesarArchivo(File file) throws Exception{
 		Scanner scan = new Scanner(file);
 		
-		scan.line
+		int cant_vecinos = scan.nextInt(); // cantidad de vecinos
+        int cant_lazos = scan.nextInt(); // cantidad de lazos
+        int x = scan.nextInt(); // primer oponente
+        int y = scan.nextInt(); // segundo oponente
 		
+        
 	}
 }
