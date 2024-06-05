@@ -4,7 +4,7 @@ import org.grupo05.aliados.archivo.Archivo;
 import org.grupo05.aliados.data.Amistad;
 import org.grupo05.aliados.data.Datos;
 
-public class Resolucion2 {
+public class Resolucion2 implements Resolucion {
 	public String resolver(String inputfilename, String outputfilename) {
 		String output = null;
 		try {
