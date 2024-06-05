@@ -56,18 +56,6 @@ public class Datos {
 	
 	
 	
-	public int getAliadosX() {
-		return aliadosX;
-	}
-	public void setAliadosX(int aliadosX) {
-		this.aliadosX = aliadosX;
-	}
-	public int getAliadosY() {
-		return aliadosY;
-	}
-	public void setAliadosY(int aliadosY) {
-		this.aliadosY = aliadosY;
-	}
 	public void iniciarMapas() {
 		amistades.put(x, new HashMap<>());
         amistades.put(y, new HashMap<>());
@@ -76,5 +64,35 @@ public class Datos {
 	public void decidirLazos() {
 		aliadosX = amistades.get(x).size();
         aliadosY = amistades.get(y).size();
+	}
+	
+	public void insertarAmistad(Amistad amistad) {
+		int k = amistad.getVecinoA(),
+				r = amistad.getVecinoB(),
+				l = amistad.getFuerzaAmistad();
+		
+		if( k == x){
+            defineAmistad(x, y, r, l);
+        } else if ( k == y){
+            defineAmistad(y, x, r, l);
+        } else if (r == x){
+            defineAmistad(x, y, k, l);
+        } else if (r == y){
+            defineAmistad(y, x, k, l);
+        }
+	}
+	
+	private void defineAmistad(int oponenteActual, int oponenteOtro, int vecino, int amistadActual) {
+        int amistadOtro = amistades.get(oponenteOtro).getOrDefault(vecino, -1);
+        if( amistadActual > amistadOtro){
+            amistades.get(oponenteOtro).remove(vecino);
+            amistades.get(oponenteActual).put(vecino,amistadActual);
+        } else if ( amistadActual == amistadOtro){
+            amistades.get(oponenteOtro).remove(vecino);
+        }
+    }
+	
+	public String obtenerResultado() {
+		return aliadosX + " " + aliadosY;
 	}
 }
